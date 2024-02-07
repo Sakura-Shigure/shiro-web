@@ -1,51 +1,82 @@
-import { Link } from "@nextui-org/link";
-import { Snippet } from "@nextui-org/snippet";
-import { Code } from "@nextui-org/code"
-import { button as buttonStyles } from "@nextui-org/theme";
-import { siteConfig } from "@/config/site";
-import { title, subtitle } from "@/components/primitives";
-import { GithubIcon } from "@/components/icons";
+import {
+  Card,
+  CardBody,
+  Divider,
+  Image,
+  Link,
+  Spacer,
+} from "@nextui-org/react";
 
 export default function Home() {
-	return (
-		<section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
-			<div className="inline-block max-w-lg text-center justify-center">
-				<h1 className={title()}>Make&nbsp;</h1>
-				<h1 className={title({ color: "violet" })}>beautiful&nbsp;</h1>
-				<br />
-				<h1 className={title()}>
-					websites regardless of your design experience.
-				</h1>
-				<h2 className={subtitle({ class: "mt-4" })}>
-					Beautiful, fast and modern React UI library.
-				</h2>
-			</div>
-
-			<div className="flex gap-3">
-				<Link
-					isExternal
-					href={siteConfig.links.docs}
-					className={buttonStyles({ color: "primary", radius: "full", variant: "shadow" })}
-				>
-					Documentation
-				</Link>
-				<Link
-					isExternal
-					className={buttonStyles({ variant: "bordered", radius: "full" })}
-					href={siteConfig.links.github}
-				>
-					<GithubIcon size={20} />
-					GitHub
-				</Link>
-			</div>
-
-			<div className="mt-8">
-				<Snippet hideSymbol hideCopyButton variant="flat">
-					<span>
-						Get started by editing <Code color="primary">app/page.tsx</Code>
-					</span>
-				</Snippet>
-			</div>
-		</section>
-	);
+  return (
+    <>
+      <Image width="100%" src="/home_image.webp" alt=""></Image>
+      <Divider className="my-3 h-0.5 w-full bg-foreground/75" />
+      <Card className="p-5">
+        <CardBody>
+          <div className="grid grid-cols-6 md:grid-cols-12  gap-6 md:gap-4">
+            <div className="relative col-span-6 md:col-span-3">
+              <Image alt="" radius="full" src="home_head.webp" width={100} />
+            </div>
+            <div className="flex flex-col col-span-6 md:col-span-9 ">
+              <h1 className="text-2xl font-semibold">白/Shiro</h1>
+              <h1 className="text-xl text-white">
+                專職插畫繪圖，歡迎個人/商用委託詢問
+              </h1>
+              <h1 className="text-xl text-white">訊息通常 9:00~24:00 回覆</h1>
+              <h1 className="text-2xl font-semibold leading-loose">
+                【聯絡方式】
+              </h1>
+              <p className="text-default-600">
+                <span className="text-primary">X(Twitter)</span>{" "}
+                <Link
+                  isExternal
+                  href="https://twitter.com/BT871213"
+                  className="text-inherit hover:underline"
+                >
+                  @BT871213
+                </Link>
+              </p>
+              <p className="text-default-600">
+                <span className="text-primary">Discord</span> shiro1213
+              </p>
+              <p className="text-default-600">
+                <span className="text-primary">Email</span>{" "}
+                <Link
+                  isExternal
+                  href="mailto:shirobt1213@gmail.com"
+                  className="text-inherit hover:underline"
+                >
+                  shirobt1213@gmail.com
+                </Link>
+              </p>
+              <h1 className="text-2xl font-semibold leading-loose">
+                【作品參考】
+              </h1>
+              <p className="text-default-600">
+                <span className="text-primary">Pixiv</span>{" "}
+                <Link
+                  isExternal
+                  href="https://www.pixiv.net/users/8910758"
+                  className="text-inherit hover:underline"
+                >
+                  白
+                </Link>
+              </p>
+              <p className="text-default-600">
+                <span className="text-primary">X(Twitter)</span>{" "}
+                <Link
+                  isExternal
+                  href="https://twitter.com/BT871213"
+                  className="text-inherit hover:underline"
+                >
+                  @BT871213
+                </Link>
+              </p>
+            </div>
+          </div>
+        </CardBody>
+      </Card>
+    </>
+  );
 }
