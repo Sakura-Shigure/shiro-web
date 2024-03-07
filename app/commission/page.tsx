@@ -1,9 +1,16 @@
 "use client";
-import { Card, CardBody, Divider, Image } from "@nextui-org/react";
+import { Card, CardBody, Divider, Image, Spacer } from "@nextui-org/react";
+
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination } from "swiper/modules";
+
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 interface CommissionModel {
   name: string;
-  image: string;
+  image: string[];
   description: string[];
 }
 
@@ -11,7 +18,13 @@ export default function CommissionPage() {
   const commissions: CommissionModel[] = [
     {
       name: "正比",
-      image: "logo.png",
+      image: [
+        "illustration_1.webp",
+        "illustration_2.webp",
+        "illustration_3.webp",
+        "illustration_5.webp",
+        "illustration_6.webp",
+      ],
       description: [
         "胸上 $2000 起",
         "腰上 $2500 起",
@@ -23,7 +36,13 @@ export default function CommissionPage() {
     },
     {
       name: "Q版",
-      image: "logo.png",
+      image: [
+        "Q_character_1.webp",
+        "Q_character_2.webp",
+        "Q_character_3.webp",
+        "Q_character_4.webp",
+        "Q_character_5.webp",
+      ],
       description: [
         "胸上 $1000 起",
         "全身 $1500 起",
@@ -33,7 +52,7 @@ export default function CommissionPage() {
     },
     {
       name: "表情符號",
-      image: "logo.png",
+      image: ["emote_1.webp", "emote_2.webp"],
       description: [
         "$300 起",
         "簡易動態 +$50↑",
@@ -43,7 +62,7 @@ export default function CommissionPage() {
     },
     {
       name: "場景",
-      image: "logo.png",
+      image: ["scene_1.webp", "scene_2.webp"],
       description: [
         "純場景 $2000 起",
         "比較擅長夜景、星空、自然場景、沒有太多物件的室內",
@@ -52,22 +71,22 @@ export default function CommissionPage() {
     },
     {
       name: "圓徽章設計",
-      image: "logo.png",
+      image: ["circle_1.webp", "circle_2.webp", "circle_3.webp"],
       description: ["$1000 起"],
     },
     {
       name: "剪影",
-      image: "logo.png",
+      image: ["cutscene_1.webp"],
       description: ["$1000 起", "人數=單人價格*n"],
     },
     {
       name: "文字設計",
-      image: "logo.png",
+      image: ["text_design_1.webp", "text_design_2.webp"],
       description: ["$2000 起"],
     },
     {
       name: "角色設計",
-      image: "logo.png",
+      image: ["logo.png"],
       description: [
         "$3000 起",
         "以簡單站姿單人為主",
@@ -79,29 +98,38 @@ export default function CommissionPage() {
   return (
     <>
       {commissions.map((data, i) => (
-        <Card className="my-2" key={i}>
-          <CardBody>
+        <Card className="my-2 max-h-full" key={i}>
+          <CardBody className="mx-2 my-2">
             <div className="grid grid-cols-6 md:grid-cols-12 gap-6 md:gap-4">
-              <div className="flex flex-col col-span-6 md:col-span-8">
+              <div className="relative col-span-6 md:col-span-5">
+                <Swiper
+                  pagination={{ type: "bullets", clickable: true }}
+                  modules={[Navigation, Pagination]}
+                  className="rounded-lg bg-white"
+                  grabCursor
+                  loop
+                >
+                  {data.image.map((image, i) => (
+                    <SwiperSlide key={i}>
+                      <Image
+                        loading="lazy"
+                        src={image}
+                        alt=""
+                        radius="none"
+                        className="object-contain h-64 md:h-80"
+                      />
+                    </SwiperSlide>
+                  ))}
+                </Swiper>
+              </div>
+              <div className="flex flex-col col-span-6 md:col-span-7">
                 <h1 className="text-4xl font-bold">{data.name}</h1>
-                <div className="flex justify-between items-start">
-                  <Divider className="my-3 w-full bg-foreground" />
-                </div>
+                <Spacer y={3} />
                 <ul className="list-disc mx-5 text-default-600 marker:text-primary ">
                   {data.description.map((desc, i) => (
                     <li key={i}>{desc}</li>
                   ))}
                 </ul>
-              </div>
-              <div className="relative col-span-6 md:col-span-4">
-                <Image
-                  alt=""
-                  className="object-cover"
-                  height={200}
-                  shadow="md"
-                  src={data.image}
-                  width="100%"
-                />
               </div>
             </div>
           </CardBody>

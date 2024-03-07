@@ -34,7 +34,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <Providers themeProps={{ attribute: "class", defaultTheme: "custom" }}>
           <div className="relative flex flex-col md:min-h-screen min-h-full">
-          <Topbar />
+            <Topbar />
             <main className="container mx-auto max-w-3xl pt-7 px-6 flex-grow">
               {children}
             </main>
@@ -50,25 +50,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 </div>
                 <div className="place-self-center">
                   <p>
-                    白 Shiro
                     <br />
-                    <Link
-                      isExternal
-                      href="https://twitter.com/BT871213"
-                      className="text-inherit hover:underline"
-                    >
-                      <TwitterIcon />
-                    </Link>{" "}
-                    <Link
-                      isExternal
-                      href="https://twitter.com/BT871213"
-                      className="text-inherit hover:underline"
-                    >
-                      <PixivIcon />
-                    </Link>
                     <br />
                     <br />
                     <span className="text-default-600/30 text-xs">
+                      copyright © 白 Shiro. All Right Reserved
+                      <br />
                       Made by Sakura Shigure
                     </span>
                     <br />

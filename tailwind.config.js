@@ -19,7 +19,7 @@ module.exports = {
           extend: "dark",
           colors: {
             foreground: "#f85050",
-            background: "#000000",
+            background: "#323232",
             footer: "#8A2C2C",
             primary: {
               DEFAULT: "#f489c5",
